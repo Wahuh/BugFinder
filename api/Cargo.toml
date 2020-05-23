@@ -1,0 +1,17 @@
+[package]
+name = "api"
+version = "0.1.0"
+authors = ["Thanh Doan <tmdoan98@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.31"
+async-graphql = "1.12.2"
+async-graphql-tide = "1.4.8"
+async-std = { version = "1.6.0", features = ["attributes"] }
+async-trait = "0.1.31"
+chrono = "0.4.11"
+sqlx = { version = "0.3", features = [ "postgres", "chrono" ] }
+tide = "0.8"
