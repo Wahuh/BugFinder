@@ -15,10 +15,10 @@ impl Postgres {
         let issue = sqlx::query_as!(
             Issue,
             "
-            SELECT *
-            FROM issues
-            WHERE id = $1
-        ",
+				SELECT *
+				FROM issues
+				WHERE id = $1
+        	",
             id
         )
         .fetch_one(&self.pool)
@@ -44,19 +44,19 @@ impl Postgres {
     }
 
     pub async fn insert_project(&self, new_project: NewProject) -> Result<Project> {
-      let project = sqlx::query_as!(
-        Project,
-        "
-          INSERT INTO projects (title, description, created_at)
-          VALUES ($1, $2, timezone('UTC', now()))
-          RETURNING *
-        ",
-        &new_project.title,
-        &new_project.description
-      )
-      .fetch_one(&self.pool)
-      .await?;
+        let project = sqlx::query_as!(
+            Project,
+            "
+				INSERT INTO projects (title, description, created_at)
+				VALUES ($1, $2, timezone('UTC', now()))
+				RETURNING *
+        	",
+            &new_project.title,
+            &new_project.description
+        )
+        .fetch_one(&self.pool)
+        .await?;
 
-      Ok(project)
+        Ok(project)
     }
 }

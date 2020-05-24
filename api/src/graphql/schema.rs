@@ -23,7 +23,11 @@ impl Mutation {
         Ok(issue)
     }
 
-    async fn create_project(&self, ctx: &Context<'_>, new_project: NewProject) -> FieldResult<Project> {
+    async fn create_project(
+        &self,
+        ctx: &Context<'_>,
+        new_project: NewProject,
+    ) -> FieldResult<Project> {
         let database: &Postgres = ctx.data();
         let project = database.insert_project(new_project).await?;
         Ok(project)

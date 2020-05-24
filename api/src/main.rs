@@ -1,11 +1,12 @@
 mod database;
 mod graphql;
+
 use database::Postgres;
+use graphql::schema::{create_schema, AppState};
 
 use anyhow::Result;
 use async_graphql::http::playground_source;
 use async_std::task;
-use graphql::schema::{AppState, create_schema};
 use sqlx::PgPool;
 use std::env;
 use tide::{
