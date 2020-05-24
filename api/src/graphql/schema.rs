@@ -1,4 +1,4 @@
-use super::types::{Issue, NewIssue};
+use super::types::{Issue, NewIssue, NewProject, Project};
 use crate::database::Postgres;
 use async_graphql::{Context, EmptySubscription, FieldResult, Schema};
 
@@ -21,6 +21,12 @@ impl Mutation {
         let database: &Postgres = ctx.data();
         let issue = database.insert_issue(new_issue).await?;
         Ok(issue)
+    }
+
+    async fn create_project(&self, ctx: &Context<'_>, new_project: NewProject) -> FieldResult<Project> {
+        let database: &Postgres = ctx.data();
+        let project = database.insert_project(new_project).await?;
+        Ok(project)
     }
 }
 

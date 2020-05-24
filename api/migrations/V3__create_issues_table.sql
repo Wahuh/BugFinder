@@ -1,11 +1,4 @@
-CREATE TABLE user (
-  id SERIAL PRIMARY KEY,
-  username TEXT NOT NULL,
-  email TEXT NOT NULL,
-  password TEXT NOT NULL,
-);
-
-CREATE TABLE issue (
+CREATE TABLE issues (
   id SERIAL PRIMARY KEY,
   title TEXT NOT NULL,
   description TEXT,

@@ -2,6 +2,21 @@ use async_graphql::{InputObject, SimpleObject};
 use chrono::{DateTime, Utc};
 
 #[InputObject]
+pub struct NewProject {
+    pub title: String,
+    pub description: String,
+}
+
+#[SimpleObject]
+pub struct Project {
+    pub id: i32,
+    pub title: String,
+    pub description: String,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: Option<DateTime<Utc>>,
+}
+
+#[InputObject]
 pub struct NewIssue {
     pub title: String,
     pub description: String,
